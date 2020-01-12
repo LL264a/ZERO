@@ -1,2 +1,3 @@
-# ZERO
+＃零
+test
 一些python
