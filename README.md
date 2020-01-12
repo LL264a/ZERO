@@ -1,3 +1,3 @@
 ＃零
-test
-一些python
+
+一些python运用的代码
