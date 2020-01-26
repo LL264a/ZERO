@@ -50,5 +50,8 @@ echo $PS1
     蓝色高亮命令提示符
         PS1="\[\e[1;34m\][\u|\h \w]\\$\[\e[0m\]"
     红色高亮命令提示符
-        PS1="\[\e[1;32m\][\u|\h \w]\\$\[\e[0m\]"
-        
+        PS1="\[\e[1;31m\][\u|\h \w]\\$\[\e[0m\]"
+        CentOS
+        cd /etc/profile.d/ nano env.sh
+        Ubuntu
+        nano .bashrc 第59 60 行
