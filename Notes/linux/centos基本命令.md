@@ -14,7 +14,7 @@ tty
 系统当前所有登入用户
 who
     当前登入用户和时间
-    who am i 
+    who am i
 
 查看内核
 uname -r
@@ -31,7 +31,7 @@ lsblk
 
 网卡
     工具
-    mii-tool (设备名) 
+    mii-tool (设备名)
         link 表示连接
 
 当前使用是shell
@@ -39,7 +39,7 @@ echo $SHELL
 
 查看当前系统shell
 cat /etc/shells
- 
+
  主机名
  hostname
 
@@ -55,3 +55,30 @@ echo $PS1
         cd /etc/profile.d/ nano env.sh
         Ubuntu
         nano .bashrc 第59 60 行
+VM 自动登入root用户
+nano /etc/gdm/custom.conf
+    在[daemon]里添加
+AutomaticLoginEnable=true
+AutomaticLogin=root
+
+添加开机提示
+nano /etc/motd
+    Welcome to **(写你想要的东西)
+
+移动文件
+mv [文件名 移动路径]/文件名(还可以顺便改文件名)
+
+当前shell命令集
+help
+
+命令来源
+type 
+查看内外部命令
+type -a **
+
+显示字符串
+echo  |回显
+
+查看命令路径
+which   whereis_可查看文件路径，配置文件文件路径，和帮助文件路径 
+
