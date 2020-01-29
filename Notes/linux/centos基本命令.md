@@ -51,6 +51,8 @@ echo $PS1
         PS1="\[\e[1;34m\][\u|\h \w]\\$\[\e[0m\]"
     红色高亮命令提示符
         PS1="\[\e[1;31m\][\u|\h \w]\\$\[\e[0m\]"
+    给路径换颜色
+        PS1="\[\e[1;31m\][\u|\h\[\e[0m\\e[1;32m \w\e[0m\ \\$" 有Bug
         CentOS
         cd /etc/profile.d/ nano env.sh
         Ubuntu
@@ -82,3 +84,41 @@ echo  |回显
 查看命令路径
 which   whereis_可查看文件路径，配置文件文件路径，和帮助文件路径 
 
+变量
+echo $PATH
+
+显示当前shell进程所有可用的命令别名
+alias
+定义别名name，其相当雨执行命令VALUE
+alias NAME="VALUE"
+    编辑.bashrc
+        alias aria2='/etc/init.d/aria2 start'
+    立即生效
+    bashrc = bash.bashrc /etc
+        source .bashrc
+        source = .
+
+取消别名
+unalias
+
+使用原始命令
+'ALIASNAME'
+\ALIAASNAME
+command ALIASNAME
+
+; 一行执行多命令
+\ 可用多行输入命令
+Ctrl+C 退出
+sleep * 等待 时间
+
+时间
+    系统时间
+    date
+    硬件时间
+    clock
+    以系统时间为准，校正硬件时间
+    clock -w
+    以硬件时间为准，校正系统时间
+    clock -s
+    修改时区
+    timedateclt set-timezone
