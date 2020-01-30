@@ -122,3 +122,35 @@ sleep * 等待 时间
     clock -s
     修改时区
     timedateclt set-timezone
+
+日历
+    cal 月 -y年
+
+关机
+    poweroff
+重启
+    reboot 
+        -f 强制，不调用shutdown
+        -p 强制
+    shutdown[OPTION]...[TIME][MESSAGE]
+        -r :reboot
+        -h :halt    关机
+        -c :cancel  取消关机
+        TIME:无指定，默认相当于+1
+            now :立刻 相当于+0
+            +m:相对时间表示法，几分钟后；列如+3
+            hh:mm :绝对时间表示,指明具体时间
+远程协助
+screen命令
+    创建新连接
+        screen -S(大写) [name]
+    加入会话
+        screen -x [name]
+    退出
+        exit
+    剥离当前screen会话
+        Ctrl+a,d
+    显示所有已经打开screen会话
+        screen -ls
+    恢复某screen会话
+        screen -r [name]
