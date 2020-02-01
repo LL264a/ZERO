@@ -12,16 +12,16 @@
     tty
 
 系统当前所有登入用户
-who
-    当前登入用户和时间
-    who am i
+    who
+        当前登入用户和时间
+            who am i
 
 查看内核
     uname
-查看内核版本
-    uname -r
-查看操作系统版本
-    cat /etc/CentOS-release
+    查看内核版本
+        uname -r
+    查看操作系统版本
+        cat /etc/CentOS-release
 
 查看硬件
     lscpu
@@ -64,6 +64,7 @@ who
             cd /etc/profile.d/ nano env.sh
         Ubuntu
             nano .bashrc 第59 60 行
+
 VM 自动登入root用户
     nano /etc/gdm/custom.conf
     在[daemon]里添加
@@ -82,7 +83,7 @@ VM 自动登入root用户
 
 命令来源
     type 
-查看内外部命令
+    查看内外部命令
     type -a **
 
 显示字符串
@@ -91,19 +92,20 @@ VM 自动登入root用户
 查看命令路径
     which   whereis_可查看文件路径，配置文件文件路径，和帮助文件路径 
 
-变量
+显示环境
     echo $PATH
 
-显示当前shell进程所有可用的命令别名
-    alias
-定义别名name，其相当雨执行命令VALUE
-    alias NAME="VALUE"
-        编辑.bashrc
-            alias aria2='/etc/init.d/aria2 start'
-        立即生效
-            bashrc = bash.bashrc /etc
-            source .bashrc
-            source = .
+Alias 别名
+    显示当前shell进程所有可用的命令别名
+        alias
+    定义别名name，其相当雨执行命令VALUE
+        alias NAME="VALUE"
+            编辑.bashrc
+                alias aria2='/etc/init.d/aria2 start'
+            立即生效
+                bashrc = bash.bashrc /etc
+                source .bashrc
+                source = .
 
 取消别名
     unalias
@@ -135,6 +137,7 @@ sleep * 等待 时间
 
 关机
     poweroff
+
 重启
     reboot 
         -f 强制，不调用shutdown
@@ -147,20 +150,21 @@ sleep * 等待 时间
             now :立刻 相当于+0
             +m:相对时间表示法，几分钟后；列如+3
             hh:mm :绝对时间表示,指明具体时间
+
 远程协助
-screen命令
-    创建新连接
-        screen -S(大写) [name]
-    加入会话
-        screen -x [name]
-    退出
-        exit
-    剥离当前screen会话
-        Ctrl+a,d
-    显示所有已经打开screen会话
-        screen -ls
-    恢复某screen会话
-        screen -r [name]
+    screen命令
+       创建新连接
+           screen -S(大写) [name]
+       加入会话
+           screen -x [name]
+       退出
+           exit
+       剥离当前screen会话
+           Ctrl+a,d
+       显示所有已经打开screen会话
+           screen -ls
+       恢复某screen会话
+           screen -r [name]
 
 echo命令
     功能: 显示字符
@@ -207,3 +211,57 @@ Tab键
         如果唯一:则直接补全
         否则:再次Tab会给出列表
 
+Help
+    Whatis
+        显示命令的简短描述
+        使用数据库
+        刚安装后不可立即使用
+        makewhatis |mandb
+        使用示例
+            whatis cal |或man -f cal
+        命令帮助
+            内部命令: 
+                help COMMAND 或者 man bash
+            外部命令: 
+                (1) COMMAND --help
+                    COMMAND -h
+                (2) 使用手册(manual)
+                    man COMMAND
+                (3) 信息页
+                    info COMMAND
+                (4)程序自身的帮助文档
+                    README
+                    INSTALL
+                    ChangeLog
+                (5)程序官方文档
+                    官方站点:Documentation
+                (6)发行版的官方文档
+                (7)Google
+                
+命令history
+        history [-c][-d offset][n]
+        history -anrw [filename]
+        history -ps arg [arg..]
+            -c: 清空命令历史
+            -d: offset:删除历史中指定的第offset命令
+             n: 显示最近的n条历史
+            -a: 追加本次会话新执行的命令历史列表至历史文件
+            -r: 读历史文件附加到历史列表
+            -w: 保存历史列表到指定的历史文件
+            -n: 读历史文件中未读过的行到历史列表
+            -p: 展开历史参数成多行,但不存在历史列表中
+            -s: 展开历史参数成一行,附加在历史列表后
+            ![history_port]:重复执行
+        命令行历史
+            保存你输入的命令历史。可以用它来重复执行命令
+            登入shell时，会读取历史文件中记录下的命令 ~/.bash_history
+            登入进shell后新执行的命令只会记录在缓存中；这些命令会用户退出时“追加”至命令历史文件中
+            重复前一个命令,有4种方法
+                重复前一个命令使用上 方向键,并回车执行
+                按!!并回车执行
+                输入Ctrl+p并回车执行
+            !:0 执行前一条命令(去除参数)
+            Ctrl + n 显示当前历史中的下一条命令,但不执行
+            Ctrl + j 执行当前命令
+            !n 执行 history命令输入对应序号n的命令
+            !-n 执行 history历史中倒数第n个命令
