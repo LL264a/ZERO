@@ -237,7 +237,7 @@ Help
                     官方站点:Documentation
                 (6)发行版的官方文档
                 (7)Google
-                
+
 命令history
         history [-c][-d offset][n]
         history -anrw [filename]
@@ -265,3 +265,33 @@ Help
             Ctrl + j 执行当前命令
             !n 执行 history命令输入对应序号n的命令
             !-n 执行 history历史中倒数第n个命令
+            !string 重复前一个以"string"开头的命令
+            !?string 重复前一个包含string的命令
+            !string:p 仅打印命令历史,而不执行
+            !$:p 打印输出!$(上一条命令的最后一个参数)的内容
+            !*:p 打印输出!*(上一条命令的所有参数)的内容
+            ^string 删除上一条命令中的第一个string
+            ^string ^string将上一条，命令中的第一个string1替换为string2
+            !:gs/string1/string2 将上一条命令中所有string1都替换为string2
+
+            使用up(向上)和down(向下)键来上下浏览从前输入的命令
+            Ctrl -r来在命令历史中搜索命令
+            Ctrl +g : 从历史搜索模式退出
+            要重新调用前一个命令中最后一个参数
+            !$ 表示
+            Esc . (点击Esc键后松开，然后点击.键)
+            Alt+. (按住Alt键同时点击.键)
+
+            command !^ 利用上一个命令的第一个参数做cmd的参数
+            command !$ 利用上一个命令的最后一个参数做cmd的参数
+            command !* 利用上一个命令的全部参数做cmd的参数
+            command !:n 利用上一个命令的第n个参数做cmd参数
+            command !n:^ 调用第n条命令的第一个参数
+            command !n:$ 调用第n条命令的最后一个参数
+            command !n:m 调用第n条命令的第m个参数
+            command !n:* 调用第n条命令的所有参数
+            command !string:^ 从命令历史中搜索以 string,并获取它的第一个参数
+            command !string:$ 从命令历史中搜索以 string,并获取它的最后一个参数
+            command !string:n 从命令历史中搜索以 string,并获取它的第n个参数
+            command !string:* 从命令历史中搜索以 string,并获取它的所有参数
+            
