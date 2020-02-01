@@ -238,7 +238,7 @@ Help
                 (6)发行版的官方文档
                 (7)Google
 
-命令history
+    命令history
         history [-c][-d offset][n]
         history -anrw [filename]
         history -ps arg [arg..]
@@ -294,4 +294,3 @@ Help
             command !string:$ 从命令历史中搜索以 string,并获取它的最后一个参数
             command !string:n 从命令历史中搜索以 string,并获取它的第n个参数
             command !string:* 从命令历史中搜索以 string,并获取它的所有参数
-            
