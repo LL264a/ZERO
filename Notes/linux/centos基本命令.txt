@@ -251,7 +251,20 @@ Help
             -n: 读历史文件中未读过的行到历史列表
             -p: 展开历史参数成多行,但不存在历史列表中
             -s: 展开历史参数成一行,附加在历史列表后
-            ![history_port]:重复执行
+        ![history_port]:重复执行
+        HISTORY: 命令历史记录的条数
+        HISTFILE: 指定历史文件，默认为~/.bash_history
+        HISTFILESIZE: 命令历史文件记录历史的条数
+        HISTTIMEFORMAT= "%F %T " 显示时间
+        HISTIGNORE= "str1:str2*..." 忽略str1,str2开头的历史
+        控制命令历史的记录方式: 
+            环境变量:HISTCONTROL
+                ignoredups 默认，忽略重复命令，连续且相同为"重复"
+                ignorespace 忽略所有已空白开头的命令
+                ignoreboth 相当于 ignoredups,ignorespace的组合
+                erasedups 删除重复命令
+            export 变量名="值"
+            存放在 /etc/profile 或 ~/.bash_history
         命令行历史
             保存你输入的命令历史。可以用它来重复执行命令
             登入shell时，会读取历史文件中记录下的命令 ~/.bash_history
@@ -281,16 +294,89 @@ Help
             !$ 表示
             Esc . (点击Esc键后松开，然后点击.键)
             Alt+. (按住Alt键同时点击.键)
+        
+    COMMAND
+        command !^ 利用上一个命令的第一个参数做cmd的参数
+        command !$ 利用上一个命令的最后一个参数做cmd的参数
+        command !* 利用上一个命令的全部参数做cmd的参数
+        command !:n 利用上一个命令的第n个参数做cmd参数
+        command !n:^ 调用第n条命令的第一个参数
+        command !n:$ 调用第n条命令的最后一个参数
+        command !n:m 调用第n条命令的第m个参数
+        command !n:* 调用第n条命令的所有参数
+        command !string:^ 从命令历史中搜索以 string,并获取它的第一个参数
+        ommand !string:$ 从命令历史中搜索以 string,并获取它的最后一个参数
+        command !string:n 从命令历史中搜索以 string,并获取它的第n个参数
+        command !string:* 从命令历史中搜索以 string,并获取它的所有参数
 
-            command !^ 利用上一个命令的第一个参数做cmd的参数
-            command !$ 利用上一个命令的最后一个参数做cmd的参数
-            command !* 利用上一个命令的全部参数做cmd的参数
-            command !:n 利用上一个命令的第n个参数做cmd参数
-            command !n:^ 调用第n条命令的第一个参数
-            command !n:$ 调用第n条命令的最后一个参数
-            command !n:m 调用第n条命令的第m个参数
-            command !n:* 调用第n条命令的所有参数
-            command !string:^ 从命令历史中搜索以 string,并获取它的第一个参数
-            command !string:$ 从命令历史中搜索以 string,并获取它的最后一个参数
-            command !string:n 从命令历史中搜索以 string,并获取它的第n个参数
-            command !string:* 从命令历史中搜索以 string,并获取它的所有参数
+    man命令
+        查看man手册页
+            man [章节] keyword
+        列出所有帮助
+            man -a keyword
+        搜索man手册
+            man -k keyword 列出所有匹配的页面
+            使用 whatis 数据库
+        相当于whatis
+            man -f keyword
+        答应man帮助文件的路径
+            man -w [章节] keyword
+
+        提供命令帮助的文件
+        手册页存放在/usr/share/man
+        几乎每个命令都有man的"命令"
+        man页面分组为不同的"章节"
+        统称为Linux手册
+        man命令的配置文件: /etc/man.config | man_db.conf
+            MANPATH /PATH/TO/SOMEWHER: 指明man文件搜索位置
+        man -M /PATH/TO/SOMEWHER COMMAND:到指定位置下搜索
+            COMMAND命令的手册页并显示
+        中文man需要安装包man-pages-zh-CN 
+        man章节
+            1: 用户命令
+            2: 系统调用
+            3: C库调用
+            4: 设备危机及特殊文件
+            5: 配置文件格式
+            6: 游戏
+            7: 杂项
+            8: 管理类的命令
+            9: Linux 内核API
+            查看章节
+            Whatis [命令]
+        man 帮助段落说明
+        帮助手册中的段落说明:
+            name 名称及简要说明
+            SYNOPSIS 用法格式说明
+                [] 可选内容
+                <> 必选内容
+                a|b 二选一
+                {} 分组
+                ... 同一内容可出现多次
+            DESCRIPTION 详细说明
+            OPTIONS 选项说明
+            EXAMPLE 示例
+            FILES 相关文件
+            AUTHOR 作者
+            COPYRIGHT 版本信息
+            REPORTING BUGS bug信息
+            SEE ALSO 其他帮助参考
+        man命令的操作方法: 使用less命令实现
+            space, ^v,^f,^F: 向文件尾翻屏
+            b, ^b: 向文件首部翻屏
+            d, ^d: 向文件尾部翻半屏
+            u, ^u: 向文件首部翻半屏
+            RETURN, ^N,e,^E or j or ^J: 向文件尾部翻一行 y or ^Y or ^P or k or ^k 向文件首部翻一行
+            q: 退出
+            #: 跳转至第#行
+            1G:  回到文件首部
+            G:翻至文件尾部
+        man搜索
+            /KEYWORD:
+                以KEYWORDz指定的字符串为关键字，从当前位置向文件尾部搜索；不区分字符大小写:
+                n: 下一个
+                N: 上一条
+            ？KEYWORD:
+                以KEYWORDz指定的字符串为关键字，从当前位置向文件首部搜索；不区分字符大小写：
+                n: 跟搜索命令同方向，下一个
+                N: 跟搜索命令反方向，下上一个
