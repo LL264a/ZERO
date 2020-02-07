@@ -398,3 +398,56 @@ Help
         s 文字 文本搜索
         q 退出info
 
+    通过本地文档获取帮助
+        System->help (CentOS6)
+        Applications -> Documentation ->help (CentOS)
+            提供的官方使用指南和发行注记
+        /usr/share/doc 目录
+            多少安装了软件包的子目录，包括了这些软件的相关原理说明
+            常见文档: README INSTALL CHANGES
+            不适合其他地方的文档的位置
+                配置文件规范
+                HTML/PDF/PS 格式的文档
+                授权书详情
+    通过在线文档获取帮助
+        http://www.nginx.org
+        http://tomcat.apache.org
+        http://httpd.apache.org
+        http://www.python.org
+    通过发行版官方的文档光盘或网站可以获得
+        安装指南，部署指南，虚拟化指南
+        红帽知识库和官方在线文档
+        http://kbase.redhat.com
+        http://www.redhat.com/docs
+        http://access.redhat.com
+
+bash快捷键
+    Ctrl + l   清屏，相当于 clear 命令 
+    Ctrl + o   执行当前命令，并重新显示本命令
+    Ctrl + s   阻止屏幕输出，锁定
+    Ctrl + q   允许屏幕输出
+    Ctrl + c   终止命令
+    Ctrl + z   挂起命令
+    Ctrl + a   光标移动到命令行首，相当于Home
+    Ctrl + e   光标移动到命令行尾，相当于End
+    Ctrl + f   光标向右移动一个字符
+    Ctrl + b   光标向左移动一个字符
+    Alt  + f   光标向右移动一个单词尾   
+    Alt  + b   光标向左移动一个单词首
+    Ctrl + xx  光标在命令行首和光标之间移动
+    Ctrl + u   从光标处删除至命令行首
+    Ctrl + k   从光标处删除至命令行尾
+    Alt  + r   删除当前整行
+     
+    Ctrl + w   从光标处向左删除至单词首
+    Alt + d    从光标处向右删除至单词尾
+    Ctrl + d   删除光标处的一个字符
+    Ctrl + h   册_光标前的一个字
+    Ctrl + y   寄删除的字符粘贴至光标后
+    Alt + c    从光标处开始向右更改为首字母大写的单词
+    Alt + u    从光标处开始，彳芬S边一个单词更改为大写
+    Alt + 1    从光标处开始，1等右边一个单词更改为小写
+    Ctrl + t   交换光标处和之前的字符位置
+    Alt + t    交换光标处和之前的单词位置
+    Alt+ N     提示输入指定字符后，重复显示该字符N次
+    注意：Alt组合快捷键经常和其它软件冲突
