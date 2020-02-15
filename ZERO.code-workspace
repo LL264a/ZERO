@@ -8,5 +8,10 @@
 			"name": "ALiYunDNS",
 			"path": "E:\\Learn\\code\\ALiYunDNS"
 		}
-	]
+	],
+	"settings": {
+		"files.exclude": {
+			"settings.json": true
+		}
+	}
 }
