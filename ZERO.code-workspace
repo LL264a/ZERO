@@ -1,9 +1,11 @@
 {
 	"folders": [
 		{
-			"path": "E:\\Learn\\code"
+			"name": "ZERO",
+			"path": "E:\\Learn\\code\\ZERO"
 		},
 		{
+			"name": "ALiYunDNS",
 			"path": "E:\\Learn\\code\\ALiYunDNS"
 		}
 	]
