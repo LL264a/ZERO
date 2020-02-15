@@ -1,0 +1,21 @@
+文件和目录组成一个单根倒置树结构
+文件系统从跟目录下开始，用"/"表示
+根文件系统（rootfs）: root fliesystem
+文件名称区分大小写
+以 . 开头的文件为隐藏文件
+路径分隔的 /
+文件有两类数据:
+    元数据: metadata
+    数据：data
+文件系统分层结构: LSB Linux Standard Base
+FHS:(Fliesystem Hiersrchy Standard)
+    http://www.pathname.com/fhs
+
+文件名最长255 个字节
+包括路径在内文件名称最长4095个字节
+蓝色-->目录 绿色-->可执行文件 红色-->压缩文件 浅蓝色-->链接文件 灰色-->其他文件
+
+除了斜杠和NUL，所有字符都有效。但使用特殊字符的目录名和文件不推荐使用，有些字符需要用引号来引用它们
+标准Linux文件系统(如ext4)，文件名称大小写敏感
+ 例如: MAIL,Mail,mail,mAil 
+ 

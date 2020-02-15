@@ -422,6 +422,7 @@ Help
         http://access.redhat.com
 
 bash快捷键
+
     Ctrl + l   清屏，相当于 clear 命令 
     Ctrl + o   执行当前命令，并重新显示本命令
     Ctrl + s   阻止屏幕输出，锁定
@@ -451,3 +452,4 @@ bash快捷键
     Alt + t    交换光标处和之前的单词位置
     Alt+ N     提示输入指定字符后，重复显示该字符N次
     注意：Alt组合快捷键经常和其它软件冲突
+
