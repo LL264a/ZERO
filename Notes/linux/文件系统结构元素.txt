@@ -19,3 +19,61 @@ FHS:(Fliesystem Hiersrchy Standard)
 标准Linux文件系统(如ext4)，文件名称大小写敏感
  例如: MAIL,Mail,mail,mAil 
  
+ 文件系统结构 
+    /boot           : 引导文件存放目录，内核文件(vmlinuz),引导加载器(bootloader,grub)都有存放于此目录
+    /bin            : 所有用户使用的基本命令; 不能关联至独立分区，OS启动即会用到的程序
+    /sbin           : 管理类的基本命令; 不能关联至独立分区，OS启动即会用到的程序
+    /lib            : 启动时程序依赖的基本共享库文件以及内核模块文件(/lib/modules)
+    /lib64          : 专用于x96_64系统上的辅助共享文件存放位置
+    /etc            : 配置文件目录
+    /home/USERNAMR  : 普通用户家目录
+    /root           : 管理员的家目录
+    /media          :便携式移动设备挂载点
+
+显示当前工作目录
+    每个shell和系统进程都有一个当前的工作目录
+    CWD: current work directory
+    显示当前shell CWD 的绝对路径
+        pwd: printing working directory
+            -P 显示真实物理路径
+            -L 显示链接路径 (默认)
+
+绝对和相对路径
+    路径
+        以正斜杠开始
+        完整的文件的位置路径
+        可用于任何想指定一个文件名的时候
+    路径名
+        不以斜线开始
+        指定相对于当前工作目录或某目录的位置
+        可用作为一个简短的形式指定一个文件名
+    基名: basename
+    目录名: dirname
+
+更改目录
+    cd 改变目录
+        使用绝对或相对路径
+            cd /home/wang/
+            cd home/wang
+        切换至父目录: cd ..
+        切换至当前用户主目录: cd
+        切换至以前的工作目录: cd -
+    选项: -P 
+    相关环境变量
+        PWD: 当前目录路径
+        OLDPWD: 上一次目录路径
+
+列出目录内容
+    列出当前目录的内容或者指定目录
+    用法: ls [options][files_or_dirs]
+    示列:
+        ls -a   包含隐藏文件
+        ls -l   显示额外的信息
+        ls -R   目录递归通过
+        ls -ld  目录和符号链接信息
+        ls -1   文件分行显示
+        ls -S   按从大到小排序
+        ls -t   按mtime排序
+        ls -u   配合-t选项，显示并按mtime从新到旧排序
+        ls -U   按目录存放顺序显示
+        ls -x   按文件后缀排序
