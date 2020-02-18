@@ -1,0 +1,52 @@
+环境:
+    虚拟环境:
+    VMware
+
+    源阿里镜像:
+    CentOS Linux release 7.7.1908 (Core)
+    Linux version 3.10.0-1062.12.1.el7.x86_64
+
+    Gnome GUI:
+    GNOME Shell 3.28.3
+
+检查安装了VNC server
+    rpm -q tigervnc tigervnc-server
+
+安装VNC packages: 
+     yum install tigervnc-server -y
+     有系统盘的话
+     进入系统盘
+     rpm -ivh tigervnc-server-1.8.0-17.el7.x86_64.rpm
+
+配置:
+    复制配置模板
+    cp /lib/systemd/system/vncserver@.service /etc/systemd/system/vncserver@:1.service
+    修改配置
+    nano /etc/systemd/system/vncserver@\:1.service
+    在这我使用root用户
+
+重新载入systemctl
+    systemctl daemon-reload
+
+设置nvc密码
+    nvcpasswd root
+
+    Would you like to enter a view-only password (y/n)? n
+    这是问你只用于查看 什么都不做
+
+防火墙:
+    我用的iptable防火墙的所以
+    nano /etc/sysconfig/iptables
+    在合适位置加上
+    -A INPUT -mstate--stateNEW -mtcp -p tcp --dport5900:5903-j ACCEPT
+    重启iptable
+    rervice iptables restart
+
+    如果是用Centos 7 默认防火墙的需要
+    firewall-cmd --permanent --add-service vnc-server
+    systemctl restart firewalld.service
+
+    如果还是有问题可以试试关闭防火墙
+    systemctl stop firewalld.service
+    systemctl disable firewalld.service
+
