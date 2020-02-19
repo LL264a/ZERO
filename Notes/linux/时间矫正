@@ -1,11 +1,13 @@
-2、将ntp设置为缺省启动：systemctl enable ntpd
+2、将ntp设置为缺省启动：
+    systemctl enable ntpd
 
-3、修改启动参数，增加-g -x参数，允许ntp服务在系统时间误差较大时也能正常工作：vi /etc/sysconfig/ntpd
+3、修改启动参数，增加-g -x参数，允许ntp服务在系统时间误差较大时也能正常工作：
+    vi /etc/sysconfig/ntpd
 
+4、启动ntp服务：
+    service ntpd restart
 
-
-4、启动ntp服务：service ntpd restart
-
-5、将系统时区改为上海时间（即CST时区）：ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+5、将系统时区改为上海时间（即CST时区）：
+    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 6、输入date命令查看时间是否正确
