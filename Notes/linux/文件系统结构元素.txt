@@ -90,4 +90,16 @@ FHS:(Fliesystem Hiersrchy Standard)
     [A-Z]   字母
     [wang]  匹配列表中的任何的一个字符 
     [^wang] 匹配列表中的所有字符以外的字符
-    
+    预定义的字符类:man 7 glob
+        [:digit:]:  任意数字，相当于0-9
+        [:lower:]:  任意小写字母
+        [:upper:]:  任意大写字母
+        [:alpha:]:  任意大小写字母 
+        [:alnum:]:  任意数字或字母 
+        [:blank:]:  水平空白字符 
+        [:space:]:  水平或垂直空白字符 
+        [:punct:]:  标点符号 
+        [:print:]:  可打印字符 
+        [:cntrl:]:  控制(非打印)字符 
+        [:graph:]:  图形字符
+        [:xdigit:]: 十六进制字符
