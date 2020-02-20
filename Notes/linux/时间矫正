@@ -10,4 +10,4 @@
 5、将系统时区改为上海时间（即CST时区）：
     ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-6、输入date命令查看时间是否正确
+6、输入date命令查看时间是否正确 

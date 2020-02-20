@@ -103,3 +103,12 @@ FHS:(Fliesystem Hiersrchy Standard)
         [:cntrl:]:  控制(非打印)字符 
         [:graph:]:  图形字符
         [:xdigit:]: 十六进制字符
+
+创建空文件和刷新时间
+    touch命令
+    格式: touch [OPTION]...FILE...
+        -a  仅改变 atime和citme
+        -m  仅改变 mtime和citme
+        -t  [[CC]YY]MMDDhhmm[.ss]
+            指定atime和mitme的时间戳
+        -c  如何文件不存在，不予创建
