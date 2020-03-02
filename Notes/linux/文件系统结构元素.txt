@@ -112,3 +112,27 @@ FHS:(Fliesystem Hiersrchy Standard)
         -t  [[CC]YY]MMDDhhmm[.ss]
             指定atime和mitme的时间戳
         -c  如何文件不存在，不予创建
+
+复制文件和目录 CP
+        cp [OPTION]...[-T]SOURCE DEST
+        cp [OPTION]...SOURCE...DIRECTORY
+        cp [OPTION]...-t DIRECTORY SOURCE
+        cp SRC DEST
+    SRC是文件
+        如果目标不存在: 新建 DEST , 并将 SRC 中内容填充至 DEST 中内容填充中
+        如果目标存在
+            如果 DEST 是文件: 将 SRC 中的内容覆盖至 DEST 中基于安全, 建议为 cp 命令使用 -i 选项
+            如果 DEST 是目录: 在 DEST 下载新建与源文件同名的文件, 并将 SRC 中内容填充至新文件中
+        -i:     覆盖前提示  -n: 不覆盖, 注意两者顺序
+        -r,-R:  递归复制目录及内部的所有内容
+        -a:     归档，相当于-dR --preserv=all
+        -d:     --no-dereference --preserv=links 不复制原文件，只复制链接 名
+        -preserv[=ATTR_LIST]
+            mode:   权限
+            ownership:  属于属组
+            timetamp:   
+            links
+            xattr
+            context
+            all
+
