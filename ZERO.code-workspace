@@ -1,13 +1,15 @@
 {
-	"folders": [
-		{
-			"name": "ZERO",
-			"path": "E:\\Learn\\code\\ZERO"
-		}
-	],
-	"settings": {
-		"files.exclude": {
-			"settings.json": true
-		}
-	}
+  "folders": [{
+      "name": "ZERO",
+      "path": "E:\\Learn\\code\\ZERO"
+    },
+    {
+      "path": "E:\\Learn\\code\\ALiYunDNS"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "settings.json": true
+    }
+  }
 }
