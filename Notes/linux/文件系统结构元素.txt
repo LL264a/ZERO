@@ -114,10 +114,18 @@ FHS:(Fliesystem Hiersrchy Standard)
         -c  如何文件不存在，不予创建
 
 复制文件和目录 CP
-        cp [OPTION]...[-T]SOURCE DEST
-        cp [OPTION]...SOURCE...DIRECTORY
-        cp [OPTION]...-t DIRECTORY SOURCE
-        cp SRC DEST
+    cp [OPTION]...[-T]SOURCE DEST
+    cp [OPTION]...SOURCE...DIRECTORY
+    cp [OPTION]...-t DIRECTORY SOURCE
+    cp SRC DEST
+
+    cp选项
+        -p: 等同 --preserv=mode,ownership,timetamp
+        -v: --verbose
+        -u: --force
+        -b: 目标存在，覆盖前先备份
+        --backup=numbered 目标存在，覆盖前先备份加数字后缀
+
     SRC是文件
         如果目标不存在: 新建 DEST , 并将 SRC 中内容填充至 DEST 中内容填充中
         如果目标存在
@@ -136,3 +144,29 @@ FHS:(Fliesystem Hiersrchy Standard)
             context
             all
 
+    示列
+    1.etc备份 到子目录backup+时间
+    cp -av /etc/ /root/data/backup'date +%F'
+    定义别名
+    alias baketc='cp -av /etc/ /root/data/backup`date +%F`'
+
+移动和重命名文件
+    mv [OPTION]...[-T] SOURCE DEST
+    mv [OPTION]...SOURCE ...DIRECTORY
+    mv [OPTION]...-t DIRECTORY SOURCE
+        常用选项:
+        -i: 交互式
+        -f: 强制
+        -b: 目标存在，覆盖前先备份
+
+删除
+    rm[OPTION]...FILE
+    常用选项:
+        -i  交互式
+        -f  强制删除
+        -r  递归
+        --no-preserve-root 删除/
+    示列:
+        rm -rf *
+
+        alias rm='mv -t /data'
