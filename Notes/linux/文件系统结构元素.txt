@@ -170,3 +170,4 @@ FHS:(Fliesystem Hiersrchy Standard)
         rm -rf *
 
         alias rm='mv -t /data'
+
