@@ -149,6 +149,10 @@ FHS:(Fliesystem Hiersrchy Standard)
     cp -av /etc/ /root/data/backup'date +%F'
     定义别名
     alias baketc='cp -av /etc/ /root/data/backup`date +%F`'
+    备份
+    cp f1{,.bak}
+    批量备份
+    rename  conf conf.bak *.conf
 
 移动和重命名文件
     mv [OPTION]...[-T] SOURCE DEST
@@ -170,4 +174,19 @@ FHS:(Fliesystem Hiersrchy Standard)
         rm -rf *
 
         alias rm='mv -t /data'
+        rm -rf ./-a
+        rm -rf /root/*
 
+目录操作
+    tree 显示目录树
+        -d:         只显示目录
+        -L levl:    指定显示目录条数
+        -p pattern: 只显示指定 pattern匹配的路径
+    mkdir 创建目录
+        -p:         存在于不报错，且可自动匹配创建所需的目录
+        -v:         显示详细信息
+        -m MODE:    创建目录时直接指定权限
+    rmdir 删除空目录
+        -p: 递归删除父目录
+        -v: 显示详细信息
+    rm -r 递归删除目录树
