@@ -1,10 +1,8 @@
 {
-  "folders": [{
+  "folders": [
+    {
       "name": "ZERO",
       "path": "E:\\Learn\\code\\ZERO"
-    },
-    {
-      "path": "E:\\Learn\\code\\ALiYunDNS"
     }
   ],
   "settings": {
