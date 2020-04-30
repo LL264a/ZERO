@@ -54,7 +54,7 @@ Centos7 设置ssh秘钥登录
       systemctl restart sshd
 
    7.下载key
-   yum lszrz
+   yum install lszrz
    sz 文件名
 
 
