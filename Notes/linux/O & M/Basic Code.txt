@@ -237,7 +237,7 @@ Help
                 (6)发行版的官方文档
                 (7)Google
 
-    命令history
+    history (命令历史)
         history [-c][-d offset][n]
         history -anrw [filename]
         history -ps arg [arg..]
