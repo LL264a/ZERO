@@ -1,6 +1,10 @@
 {
     "python.pythonPath": "D:\\Python\\Python38\\python.exe",
     "files.exclude": {
-        ".vscode": true
+        ".gitignore": true,
+        ".vscode": true,
+        "LICENSE": true,
+        "settings.json": true,
+        "ZERO.code-workspace": true
     }
 }
