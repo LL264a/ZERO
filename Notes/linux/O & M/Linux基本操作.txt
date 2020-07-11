@@ -1,0 +1,14 @@
+    内存使用情况
+        free -h
+
+    当前用户
+        whoami
+    
+    终端窗口
+        tty
+    
+    关机，重启
+        poweroff
+        reboot
+    
+    
