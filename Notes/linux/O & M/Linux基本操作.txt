@@ -11,4 +11,34 @@
         poweroff
         reboot
     
-    
+    用户ID
+        uid -u
+
+    终端Terminal
+        设备终端
+            键盘鼠标显示器
+        物理终端( /dev/console)
+            控制台(console)
+        虚拟终端(tty: teletypewriters, /dev/tty # #为[1-6])
+            tty 可有n个, Ctrl+Alt+F[1-6]
+        图形终端( /dev/tty7) startx, xwindows
+            CentOS 6: Ctrl+Alt+F7
+            CentOS 7: 在哪个终端启动,即位于哪个虚拟终端
+        串行终端(/dev/ttyS#)
+            ttyS
+        伪终端(pty: pseudo-tty, /dev/pts/#)
+            pty,SSH远程连接
+        查看当前终端设备:
+            tty
+             
+    交互式接口
+        交互式接口:启动终端后,在终端设备附加一个交互式应用程序。
+        GUI:Graphic User Interface
+            X protocol.window managrt.desktop
+                Desktop:
+                    GNOME   (C,图形库gtk)
+                    KDE     (C++,图形库qt)
+                    XFCE    (轻量级桌面)
+    CLI:Command Line Interface
+        shell程序:sh (bourn 史蒂夫·伯恩)csh tcsh ksh(korn) bash(bourn again shell)Gpl zsh
+        
