@@ -1,8 +1,20 @@
-    内存使用情况
-        free -h
+    硬件信息:
+        CPU信息
+            lscpu
+
+        内存使用情况
+            free -h
+            cat /proc/meminfo
+
+        硬盘
+            lsblk
+
+        网卡
+            mii-tool (网卡名称)
 
     当前用户
         whoami
+        who
     
     终端窗口
         tty
@@ -39,6 +51,58 @@
                     GNOME   (C,图形库gtk)
                     KDE     (C++,图形库qt)
                     XFCE    (轻量级桌面)
-    CLI:Command Line Interface
+        CLI:Command Line Interface
         shell程序:sh (bourn 史蒂夫·伯恩)csh tcsh ksh(korn) bash(bourn again shell)Gpl zsh
-        
+            CentOS shell 目录
+                cat /etc/shells
+            查看当前系统使用shell 类型
+            echo $SHELL 
+        bash shell
+            GNU Bourne-Again Shell(bash)是GNU计划中重要的工具软件之一，目前也是Linux标准的 shell,于sh兼容
+            CentOS默认使用
+
+    命令提示符
+        命令提示符: prompt
+            [root@localhost ~]#
+                # 管理员
+                $ 普通用户
+        显示提示符格式
+            [root@localhost ~]#echo $PS1
+        修改提示符格式
+            PS1="\[\e[1;5;41;33m\][\u@\h \W]\\$[\e[0m\]"
+            \e \033                         \u 当前用户
+            \h 主机名简称                    \H 主机名
+            \w 当前工作目录                  \W 当前工作目录基名
+            \t 24小时时间格式                \T 12小时时间格式
+            \! 命令历史数                    \# 开机后命令历史数
+            示列
+                CentOS,Ubuntu
+                保存文件到/root/.bashrc 第52行
+                    PS1="\[\e[37;40m\][\[\e[1;31m\]\u\[\e[1;34m\]|\h \[\e[1;33m\]\w\[\e[0m\]]\\$ "
+
+    执行命令
+        输入命令后回车
+            提请shell程序找到键入命令所对应的可执行程序或代码，并由其分析后提交给内核分配资源将其运行起来
+        在shell中可执行的命令有两类
+            内部命令:由shell自带，而且通过某个命令形式提供
+                help 内部命令列表
+                enable [NAME] 启用内部命令
+                enable -n [NAME] 禁用内部命令
+                enable -n 查看所有禁用的内部命令
+        外部命令:在文件系统路径下有对应的可用执行程序文件
+            查看路径:which -a|--skip-alias;whereis
+        区别指定的命令是内部或外部命令
+            type [NAME]
+        命令执行过程
+        内部->hash表(记录外部命令的路径)->$PATH->命令找不到
+
+        执行外部命令
+            Hash 缓冲表
+                系统初始hash表为空，当外部命令执行时，默认会从PATH路径下寻找该命令，找到后会将这条命令的路径记录到hash表中，当再次使用该命令时，shell解析器首先会查看hash表，存在将执行之，如果不存在，将会去PATH路径下找，利用hash缓冲表可大大提高命令的调用速率
+            hash常见用法
+                hash        显示hash缓存
+                hash    -l  显示hash缓存，可作为输入使用
+                hash    -p  path name 将命令全路径path起别名为name
+                hash    -t  name 打印缓存中的name的路径
+                hash    -d  name 清除name缓存
+                hash    -r  清除缓存
