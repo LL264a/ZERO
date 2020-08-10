@@ -25,6 +25,9 @@
     
     用户ID
         uid -u
+    
+    配置文件生效
+        . 路径/文件
 
     终端Terminal
         设备终端
@@ -79,6 +82,11 @@
                 CentOS,Ubuntu
                 保存文件到/root/.bashrc 第52行
                     PS1="\[\e[37;40m\][\[\e[1;31m\]\u\[\e[1;34m\]|\h \[\e[1;33m\]\w\[\e[0m\]]\\$ "
+                
+                CentOS
+                编辑文件到/etc/profile.d/[NAME].sh
+                    PS1="\[\e[37;40m\][\[\e[1;31m\]\u\[\e[1;34m\]|\h \[\e[1;33m\]\w\[\e[0m\]]\\$ "
+
 
     执行命令
         输入命令后回车
@@ -94,7 +102,7 @@
         区别指定的命令是内部或外部命令
             type [NAME]
         命令执行过程
-        内部->hash表(记录外部命令的路径)->$PATH->命令找不到
+        alias->内部->hash表(记录外部命令的路径)->$PATH->命令找不到
 
         执行外部命令
             Hash 缓冲表
@@ -106,3 +114,28 @@
                 hash    -t  name 打印缓存中的name的路径
                 hash    -d  name 清除name缓存
                 hash    -r  清除缓存
+    
+    命令别名
+        显示当前shell进程所有可用的命令别名
+            alias
+        定义别名NAME，其相当于执行命令VALUE
+            alias NAME='value'
+        在命令行中定义的别名，仅对当前shell进程有效
+        如果想永久有效，要定义在配置文件中
+            仅对当前用户有效: ~/.bashrc
+            对所有用户有效: /etc/bashrc
+        编辑配置给出的新配置不会立即生效
+        bash进程重新读取配置文件
+            source /path/to/config_file
+            .      /path/to/config_file
+        撤销别名: unalias
+            unalias [-a]name[name...]
+            -a  取消所有别名
+        如果别名同命令同名，如果要执行原命令，可使用
+            \ALIASNEME
+            "ALIASNEME"
+            'ALIASNEME'
+            command ALIASNEME
+            /path/command
+            
+    
