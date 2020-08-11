@@ -138,4 +138,28 @@
             command ALIASNEME
             /path/command
             
+    命令格式
+        COMMADN[OPTINS...][ARGUMENTS]
+            选项:用于启用或关闭命令的某个或某些功能
+                短选项: -c  例如:   -l ,-h
+                长选项: --work  例如:   --all,--human-readable
+            参数:命令的作用对象，比如文件名，用户名等
+        注意
+        多个选项以及多参数和命令之间使用空白字符隔离
+        取消和结束命令执行:Ctrl+c,Ctrl+d
+        多命令可以用 ; 符号分开
+        一个命令可以用\分成多行
     
+    日期和时间
+        Linux的两种时钟
+            系统时钟:   由Linux内核通过CPU的工作频率进行的
+            硬件时钟:   主板
+        相关指令
+            date    显示和设置系统时间
+                    date +%s
+                    date -d @150936033
+            hwclock,clock:显示硬件时钟
+                -s, --hctosys 以硬件时钟为准，校正系统时钟
+                -w, --systohc 以系统时间为准，校正硬件时钟
+        时区:   /etc/localhost
+        显示日历:   cal -y 
