@@ -11,10 +11,6 @@
 
         网卡
             mii-tool (网卡名称)
-
-    当前用户
-        whoami
-        who
     
     终端窗口
         tty
@@ -163,3 +159,37 @@
                 -w, --systohc 以系统时间为准，校正硬件时钟
         时区:   /etc/localhost
         显示日历:   cal -y 
+
+    简单命令
+        关机:   halt,poweroff
+        重启:   reboot
+                -f:强制，不调用shutdown
+                -p:切断电源
+        关机或重启: shutdown
+            shutdown[OPTINS]...[TIME][MESSAGE]
+                -r: reboot
+                -h: halt
+                -c: cancel
+        TIME:   无指定，默认相当于+1(CentOS 7)
+            now:立刻，相当于+0
+            +m: 相对时间表示法，几分钟后；例如+3
+            hh:mm:  绝对时间表示，指明时间
+        用户登入信息查看命令
+            whoami: 显示当前登入有效用户
+            who:    系统当前所有登入会话
+            w:      系统当前所有的登入会话及所做的操作
+        nano:   文本编辑
+        screen 命令:
+            创建新 screen 会话
+                screen -S [SESSION] 
+            加入 screen 会话
+                screen -x [SESSION]
+            退出并关闭 screen 会话
+                exit
+            剥离 screen 会话
+                Ctrl+a,d
+            显示所有已经打开的 screen 会话
+                screen -ls
+            恢复 screen 会话
+                screen -r [SESSION]
+            
