@@ -296,6 +296,20 @@
                 -n: 读历史文件中未读过的行到历史列表
                 -p: 展开历史参数成多行，但不存在历史列表中
                 -s: 展开历史参数成一行，附加在历史列表后
+            环境变量
+                HISTSIZE:   命令历史记录的条数
+                HISTFILE:   指定历史文件,默认为~/.bash_history
+                HISTFILESIZE:命令历史文件记录历史条数
+                HISTTIMEFORMAT="%F %T "显示时间 
+                HISTIGNORE="str1:str2*:..."忽略str1命令str2开头的历史
+                控制命令历史的记录方式:
+                    环境变量:HISTCONTROL
+                        ignoredups  默认，忽略重复的命令，连续且相同为“重复”
+                        ignorespace 忽略所有以空白开头的命令
+                        ignoreboth  相当于ignoredups,ignorespace的组合
+                        erasedups   删除重复命令
+                export  变量名=“值”
+                存放在/etc/profile 或~/.bash_profile
 
             重复前一个命令，有4中方法
                 重复前一个命令使用上方向键，并回车执行
