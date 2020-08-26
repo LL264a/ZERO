@@ -135,7 +135,7 @@
             /path/command
             
     命令格式
-        COMMADN[OPTINS...][ARGUMENTS]
+        COMMAND[OPTINS...][ARGUMENTS]
             选项:用于启用或关闭命令的某个或某些功能
                 短选项: -c  例如:   -l ,-h
                 长选项: --work  例如:   --all,--human-readable
@@ -278,7 +278,37 @@
             /usr/share/doc/
             Red hat documentation
             其它网站和搜索
-        
+
+            命令帮助
+                内部命令:   help COMMAND 或者 man bash
+                外部命令:   (1) COMMAND --help
+                                COMMAND -h
+                            (2) 使用手册(manual)
+                                man COMMAND
+                            (3)信息页
+                                info COMMAND
+                            (4)程序自身的帮助文档
+                                README
+                                INSTALL
+                                ChangeLog
+                            (5)程序官方文档
+                                官方站点:Documentation
+                            (6)发行版的官方文档
+                            (7)Google
+                            
+                --help和-h选项
+                    显示用法总结和参数
+                    使用的大多数，但并非所有的
+                    示例:
+                        date --help
+                        Usage:date[OPTINS]...[+FORMAT]or:date[-u|--utc|--universal][MMDDhhmm[[CC]YY][.ss]]
+                        []表示可选项
+                        CAPS或<>表示变化的数据
+                        ...表示一个列表
+                        x|y|z的意思是"x或y或z"
+                            -abc 的意思是-a-b-c
+                        {}表示分组
+                        
         命令历史
             保存你输入的密令历史。可用它来重复执行命令
             登入shell时，会读取命令历史文件中记录下的命令~/.bash_history
@@ -358,3 +388,4 @@
             ◆ command! string:n从命令历史中搜索以 string开头的命令,并获取它的第n个参数
             ◆ command! string;*从命令历史中搜索以 string开头的命令,并获取它的所有参数
             
+
