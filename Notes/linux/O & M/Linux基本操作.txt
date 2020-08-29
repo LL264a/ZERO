@@ -267,8 +267,8 @@
                             如果唯一:   则直接补全
                             否则:       再次 tab 给出列表
 
-        获得帮助
-            获取帮助的能力决定了技术的能力
+    获得帮助
+        获取帮助的能力决定了技术的能力
             ◆多层次的帮助
             Whatis : man -f rm
                 刷新whatis数据
@@ -279,121 +279,120 @@
             Red hat documentation
             其它网站和搜索
 
-            命令帮助
-                内部命令:   help COMMAND 或者 man bash
-                外部命令:   (1) COMMAND --help
-                                COMMAND -h
-                            (2) 使用手册(manual)
-                                man COMMAND
-                            (3)信息页
-                                info COMMAND
-                            (4)程序自身的帮助文档
-                                README
-                                INSTALL
-                                ChangeLog
-                            (5)程序官方文档
-                                官方站点:Documentation
-                            (6)发行版的官方文档
-                            (7)Google
+        命令帮助
+            内部命令:   help COMMAND 或者 man bash
+            外部命令:   (1) COMMAND --help
+                            COMMAND -h
+                        (2) 使用手册(manual)
+                            man COMMAND
+                        (3)信息页
+                               info COMMAND
+                        (4)程序自身的帮助文档
+                            README
+                               INSTALL
+                               ChangeLog
+                        (5)程序官方文档
+                               官方站点:Documentation
+                        (6)发行版的官方文档
+                        (7)Google
                             
-                --help和-h选项
-                    显示用法总结和参数
-                    使用的大多数，但并非所有的
-                    示例:
-                        date --help
-                        Usage:date[OPTINS]...[+FORMAT]or:date[-u|--utc|--universal][MMDDhhmm[[CC]YY][.ss]]
-                        []表示可选项
-                        CAPS或<>表示变化的数据
-                        ...表示一个列表
-                        x|y|z的意思是"x或y或z"
-                            -abc 的意思是-a-b-c
-                        {}表示分组
-            man命令
-                提供命令帮助的文件
-                手册页存放在/sr/ share/man
-                几乎每个命令都有man的“页面
-                man页面分组为不同的“章节”
-                统称为LⅰnuX手册
-                man命令的配置文件:/etc/man.config| man_db.conf
-                    MANPATH/PATH丌TO/ SOMEWHERE:指明man文件搜索位置
-                man -M/PATH/TO/SOMEWHERE COMMAND:到指定位置下搜索
-                COMMAND命令的手册页并显示
-                中文man需安装包man- pages-zh-CN
-                man命令的操作方法
-                    ◆man命令的操作方法:使用less命令实现
-                        space,^v^f^F:向文件尾翻屏
-                        b,^b:向文件首部翻屏
-                        d,^d:向文件尾部翻半屏
-                        u,^u:向文件首部翻半屏
-                        or^K:向文件首部翻一jσr:向文件尾部翻一行yor^Yor^Pork
-                        RETURN AN, Aeo
-                        q:退出
-                        #:跳转至第#行1
-                        1G:回到文件首部
-                        G:翻至文件尾部
-                man搜索
-                    ◆/ KEYWORD:
-                    以 KEYWORD指定的字符串为关键字,从当前位置向文件尾部搜索;不区
-                    分字符大小写
-                    :下一
-                    :上一个
-                    ? KEYWORD
-                    以 KEYWORD指定的字符串为关键字,从当前位置向文件首部搜索;不区
-                    分字符大小写;
-                    :跟搜索命令同方向,下一个
-                    :跟搜索命令反方向,上一个
+            --help和-h选项
+                显示用法总结和参数
+                使用的大多数，但并非所有的
+                示例:
+                    date --help
+                    Usage:date[OPTINS]...[+FORMAT]or:date[-u|--utc|--universal][MMDDhhmm[[CC]YY][.ss]]
+                    []表示可选项
+                    CAPS或<>表示变化的数据
+                    ...表示一个列表
+                    x|y|z的意思是"x或y或z"
+                        -abc 的意思是-a-b-c
+                    {}表示分组
+        man命令
+            提供命令帮助的文件
+            手册页存放在/sr/ share/man
+            几乎每个命令都有man的“页面
+            man页面分组为不同的“章节”
+            统称为LⅰnuX手册
+            man命令的配置文件:/etc/man.config| man_db.conf
+                MANPATH/PATH丌TO/ SOMEWHERE:指明man文件搜索位置
+            man -M/PATH/TO/SOMEWHERE COMMAND:到指定位置下搜索
+            COMMAND命令的手册页并显示
+            中文man需安装包man- pages-zh-CN
+            man命令的操作方法
+                ◆man命令的操作方法:使用less命令实现
+                    space,^v^f^F:向文件尾翻屏
+                    b,^b:向文件首部翻屏
+                    d,^d:向文件尾部翻半屏
+                    u,^u:向文件首部翻半屏
+                    or^K:向文件首部翻一jσr:向文件尾部翻一行yor^Yor^Pork
+                    RETURN AN, Aeo
+                    q:退出
+                    #:跳转至第#行1
+                    1G:回到文件首部
+                    G:翻至文件尾部
+        man搜索
+            ◆/ KEYWORD:
+            以 KEYWORD指定的字符串为关键字,从当前位置向文件尾部搜索;不区
+            分字符大小写
+            :下一
+            :上一个
+            ? KEYWORD
+            以 KEYWORD指定的字符串为关键字,从当前位置向文件首部搜索;不区
+            分字符大小写;
+            :跟搜索命令同方向,下一个
+            :跟搜索命令反方向,上一个
+        info
+            man常用于命令参考，GNU工具info适用通用文档参考
+            没有参数，列出所有的页面
+            info 页面的结构就有点像一个网站
+            每页分为“节点”
+            链接节点*
+            info[命令]
+            
+        通过本地文档获取帮助
+            System->help(centos)
+            Applications-> documentation->help(centos)
+            提供的官方使用指南和发行注记
+            /usr/share/doc目录
+            多数安装了的软件包的子目录包括了这些软件的相关原理说明
+            常见文档: README| NSTALL CHANGES
+            不适合其它地方的文档的位置
+            配置文件范例
+            HTML/PDF/PS格式的文档
+            授权书详情
+            
+        通过在线文档获取帮助
+            ◆第三方应用官方文档
+            http://www.nginx.org
+            http://tomcat.apache.org
+            http://httpd.apache.org
+            http://www.python.org
+            盘或网站可以获得
+            化指南等
+            红帽知识库和官方在线文档
+            http://kbase.redhat.com
+            http://www.redhat.com/docs
+            http://access.redhat.com
 
-                info
-                    man常用于命令参考，GNU工具info适用通用文档参考
-                    没有参数，列出所有的页面
-                    info 页面的结构就有点像一个网站
-                    每页分为“节点”
-                    链接节点*
-                    info[命令]
-                
-                通过本地文档获取帮助
-                    System->help(centos)
-                    Applications-> documentation->help(centos)
-                    提供的官方使用指南和发行注记
-                    /usr/share/doc目录
-                    多数安装了的软件包的子目录包括了这些软件的相关原理说明
-                    常见文档: README| NSTALL CHANGES
-                    不适合其它地方的文档的位置
-                    配置文件范例
-                    HTML/PDF/PS格式的文档
-                    授权书详情
-                
-                通过在线文档获取帮助
-                    ◆第三方应用官方文档
-                    http://www.nginx.org
-                    http://tomcat.apache.org
-                    http://httpd.apache.org
-                    http://www.python.org
-                    盘或网站可以获得
-                    化指南等
-                    红帽知识库和官方在线文档
-                    http://kbase.redhat.com
-                    http://www.redhat.com/docs
-                    http://access.redhat.com
-
-                红帽全球技术支持服务
-                    ◆ rhn.redhat.com或者本地卫星服务器/代理服务器
-                    基于网络管理的服务器
-                    RHN代理服务器为RHN流量提供缓存
-                    RHN卫星服务器提供自主的RHN
-                    ◆RHN账户
-                    >为及其注册和基于网络管理的RHN用户
-                    用于系统自动验证的系统
-                    ◆ sosreport
-                    收集所有系统上的日志信息的工具,并自动打成压缩包,方便技术支持人员和
-                    红帽全球支持提供分析问题依据
-                网站和搜索
-                    ◆http://tldp.org
-                    ohttp://www.slideshare.net
-                    
-                    ◆http://www.google.com
-                    Openstack filetype pd
-                    hca site: redhat. com/docs
+        红帽全球技术支持服务
+            ◆ rhn.redhat.com或者本地卫星服务器/代理服务器
+            基于网络管理的服务器
+            RHN代理服务器为RHN流量提供缓存
+            RHN卫星服务器提供自主的RHN
+            ◆RHN账户
+            >为及其注册和基于网络管理的RHN用户
+            用于系统自动验证的系统
+            ◆ sosreport
+            收集所有系统上的日志信息的工具,并自动打成压缩包,方便技术支持人员和
+            红帽全球支持提供分析问题依据
+        网站和搜索
+            ◆http://tldp.org
+            ohttp://www.slideshare.net
+            
+            ◆http://www.google.com
+            Openstack filetype pd
+            hca site: redhat. com/docs
         命令历史
             保存你输入的密令历史。可用它来重复执行命令
             登入shell时，会读取命令历史文件中记录下的命令~/.bash_history
@@ -472,5 +471,33 @@
             ◆ command! string;$从命令历史中搜索以 string开头的命令并获取它的最后个参数
             ◆ command! string:n从命令历史中搜索以 string开头的命令,并获取它的第n个参数
             ◆ command! string;*从命令历史中搜索以 string开头的命令,并获取它的所有参数
-            
-
+    
+    bash快捷键
+        Ctrl + l    清屏
+        Ctrl + o    执行当前命令，并重新显示本命令
+        Ctrl + s    阻止屏幕输出，锁定
+        Ctrl + q    允许屏幕输出
+        Ctrl + c    终止命令
+        Ctrl + z    挂起命令
+        Ctrl + a    光标移到命令行首,相当于Home
+        Ctrl + e    光标移到命令行尾,相当于End
+        Ctrl + f    光标向右移动一个字符
+        Ctrl + b    光标向左移动一个字符
+        Alt  + f    光标向右移动一个单词尾
+        Alt  + b    光标向左移动一个单词首
+        Ctrl + XX   光标在命令行首和光标之间移动
+        Ctrl + u    从光标处删除至命令行首
+        Ctrl + k    从光标处删除至命令行尾
+        Alt  + r    删除当前整行
+        Ctrl + W    从光标处向左删除至单词首
+        A|t  + d    从光标处向右删除至单词尾
+        Ctrl + d    删除光标处的一个字符
+        Ctrl + h    删除光标前的一个字符
+        Ctrl + y    将删除的字符粘贴至光标后
+        Alt  + c    从光标处开始向右更改为首字母大写的单词
+        AIt  + u    从光标处开始,将右边一个单词更改为大写
+        Alt  + l    从光标处开始,将右边一个单词更改为小写
+        Ctrl + t    交换光标处和之前的字符位置
+        Alt  + t    交换光标处和之前的单词位置
+        Alt  + N    提示输入指定字符后,重复显示该字符N次
+        注意:Alt组合快捷键经常和其它软件冲突
