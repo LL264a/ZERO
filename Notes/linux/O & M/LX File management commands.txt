@@ -12,6 +12,51 @@
     ◆FHS: (Filesystem Hierarchy Standard)
     http://www.pathname.com/fhs/
 
+文件系统结构
+    ◆ /boot:    引导文件存放目录,内核文件(vmlinuz),引导加载器(bootloader,grub)都存放于此目录
+    ◆ /bin:     所有用户使用的基本命令;不能关联至独立分区，OS启动既会用到的程序
+    ◆ /sbin:    管理类的基本命令:不能关联至独立分区，OS启动既会用到的程序
+    ◆ /lib:     启动时程序依赖的基本共享库文集以及内核模块文集(/lib/modules)
+    ◆ /etc:     配置文件目录
+    ◆ /home/USERNAME:   普通用户家目录
+    ◆ /tooe:    管理员的家目录
+    ◆ /media:   便携式移动设备挂载点
+    ◆ /mnt:     临时文件系统挂载点
+    ◆ /dev:     设备文件及特殊文件存储位置
+        b: block device,        随机访问
+        c: character device,    线性访问
+    ◆ /opt:     第三应用程序的安装位置
+    ◆ /srv:     系统上运行的服务用到的数据
+    ◆ /tmp:     临时文件存储位置
+    ◆ /usr:     universal shared,read-only data
+        bin:    保证系统拥有完整功能而提供的应用程序
+        sbin:   
+        lib:    32位使用
+        lib64:  只存在64位系统
+        include: C 程序的头文件(header files)
+        share:  结构化独立的数据,例如doc,man等
+        local:  第三方应用程序的安装位置
+            bin,sbin,lib,lib64,etc,share
+    ◆ /var:     variable date files 
+        cahe:   应用程序缓存数据目录
+        lib:    应用程序状态信息数据
+        local:  专用于位/usr/local下的应用程序存储可变数据;
+        lock:   锁文件
+        log:    日志目录及文件
+        opt:    转用于位/opt下的应用程序存储可变数据;
+        run:    运行中的进程相关数据,通常用于存储进程pod文件
+        spool:  应用程序数据池
+        tmp:    保存系统两次重启之间产生的临时数据
+    ◆ /prov:    用于输出内核与进程信息相关的虚拟文件系统
+    ◆ /sys:     用于输出当前系统上硬件设备相关虚拟文件系统
+    ◆ /selinxu: ecurity enhanced Linux,selinxu相关的安全策略的存储位置
+
+Linux上的应用程序的组成部分
+    ◆二进制程序: /bin,/sbin,/usr/bin,/usr/sbin,/usr/local/bin,/usr/local/sbin
+    ◆库文件:    /lib,/lib64,/usr/lib,/usr/lib64,/usr/local/lib,/usr/local/lib64
+    ◆配置危机:  /etc,/etc/DIRECTORY,/usr/local/etc
+    ◆帮助文件:  /usr/share/man,/usr/share/doc,/usr/local/share/man,/usr/local/ share/doc
+
 文件名规则
     ◆文件名最长255个字节
     ◆包括路径在內文件名称最长4095个字节
@@ -104,14 +149,37 @@ Linux下的文件类型
     ◆[:graph:]: 图形字符
     ◆[:Digit:]: 十六进制字符
     练习
-        1、显示/№a目录下所有以饼头,以一个小写字母结尾,且中间出现至少一位数
-        字的文件或目录
+        1、显示/var目录下所有以l开头,以一个小写字母结尾,且中间出现至少一位数字的文件或目录
+        示例: ls /var/l*[[:digit:]]*[[:lower:]]
         2、显示/etc目录下以任意一位数字开头,且以非数字结尾的文件或目录
-        3、显示/etc/目录下以非字母开头,后面跟了一个字母及其它任意长度任意字符
-        的文件或目录
-        4、显示/etc/目录下所有以rc开头,并后面是0-6之间的数字,其它为任意字符
-        的文件或目录
+        示例: ls -d /etc/[0-9]*[^0-9] 
+        3、显示/etc/目录下以非字母开头,后面跟了一个字母及其它任意长度任意字符的文件或目录
+        示例: ls -d [^[:alpha:][[:alpha:]]*
+        4、显示/etc/目录下所有以rc开头,并后面是0-6之间的数字,其它为任意字符的文件或目录
+        示例: ls -d /etc/rc[0-6]*
         5、显示/etc目录下,所有以d结尾的文件或目录
+        示例: ls -d /etc/*.d -d
         6、显示et目录下,所有con结尾,且以mn,p开头的文件或目录
+        示例: ls ls -d /etc/[mnrp]*.conf
         7、只显示/root下的隐藏文件和目录
+        示例: ls -d /root/.*
+              ls -aI "[^.]*"  
         8、只显示/etc下的非隐藏目录
+        示例: ls -d /etc/*/
+
+关闭防火墙
+    CentOS7 
+        systemctl stop firewalld
+        systemctl disable firewalld
+    CentOS6
+        service iptables stop
+        chkconfig iptables off 
+
+创建空文件和刷新时间
+    ◆touch命令
+    ◆格式:touch [OPTION]...FILE...
+        -a  仅改变 atime和ctime
+        -m  仅改变 mtime和ctime
+        -t  [[CC]YY]MMDDhhmm[.ss]
+                指定atime和mtime的时间戳
+        -c  如果文件不存在，则不予创建
