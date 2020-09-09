@@ -134,7 +134,6 @@ Linux下的文件类型
     ◆[A-z]:     字母
     ◆[Wang]     匹配列表中的任何的一个字
     ◆[^Wang]    匹配列表中的所有字符以外的字符
-
     ◆预定义的字符类: man7 gob
     ◆[:digit:]: 任意数字,相当于0-9
     ◆[:loWer:]: 任意小写字母
@@ -183,3 +182,59 @@ Linux下的文件类型
         -t  [[CC]YY]MMDDhhmm[.ss]
                 指定atime和mtime的时间戳
         -c  如果文件不存在，则不予创建
+
+复制文件和目录cp
+    ◆cp [OPTION]...[-T] SOURCE DEST
+    ◆cp [OPTION]...SOURCE...DIRECTORY
+    ◆cp [OPTION]...-t DIRECTORY SOURCE...
+    ◆cp SRC DEST
+    SRC是文件
+        如果目标不存在: 新建DEST,并将SRC中内容填充至DEST中
+        如果目标存在:
+            如果 DEST 是文件: 将 SRC中的内容覆盖至 并将SRC中
+                基于安全,建议为cp命令使用-i选项
+            如果 DEST是目录: 在 DEST下新建与原文件同名的文件, 并将 SRC中的内容填充至新文件中
+    cp常用选项
+    ◆-i:    覆盖钱提示  -n:  不覆盖，注意两者顺序
+    ◆-r,-R: 递归复制目录及内容的所有内容
+    ◆-a:    归档，相当于-dR --preserv=all
+    ◆-d:    --no-dereferrnce --preserv=links 不复制原文件,只复制链接名
+    ◆--preserv[=ATTR_LIST]
+        mode: 权限
+        ownership: 属主属组
+        timestamp:
+        links
+        xattr
+        context
+        all
+    ◆-p:    等同--preserv=node,ownership,timestamp
+    ◆-v:    --verbose
+    ◆-f:    --force
+    ◆-u:    --update 只复制源比目标更新文件或者目标不存在的文件
+    ◆-b:    目标存在,覆盖前先备份
+    ◆--backup=numbered  目标存在，覆盖前线备份加数字后缀
+
+    练习
+        ◆1、定义别名命令 baked,每天将/etc/目录下所有文件,备份到/app独立的子目录下,并要求子目录格式为 backupYYYY-mm-dd,备份过程可见
+        示例:   alias backetc='cp -av /etc/ ~/date/backup`date +%F`'
+        ◆2、创建/app/ rootdir目录,并复制root下所有文件到该目录内,要求保留原有权限
+        示例:   cp -vrp /root/ ./rootdir
+
+移动和重命名文件
+    ◆mv [OPTION]...[-T]SOURCE DEST
+    ◆mv [OPTION]...SOURCE...DIRECTORY
+    ◆mv [OPTION]...-t DIRECTORY SOURCE
+        常用选项:
+            -i: 交互式
+            -f: 强制
+            -b: 目标存在，覆盖前先备份
+
+删除
+    ◆rm [OPTION...FILE
+    ◆常用选项:
+        -i  交互式
+        -f  强制删除
+        -r  递归
+        --on-preserv-root 删除/
+    ◆示例:
+        rm -rf /
