@@ -238,3 +238,36 @@ Linux下的文件类型
         --on-preserv-root 删除/
     ◆示例:
         rm -rf /
+
+目录操作
+    ◆tree 显示目录树
+        -d:         只显示目录
+        -L level:   指定显示的层级数目
+        -P pattern: 只显示有指定 pattern匹配的路径
+    ◆mkdir 创建目录
+        -p:     存在于不报错,且可自动创建所需的各目录
+        -v:     显示详细信息
+        -m MODE:创建目录时直接指定权限
+    ◆rmdir 删除空目录
+        -p:     递归删除父系空目录
+        -v:     显示详细信息
+    ◆rm -r 递归删除目录树
+
+    练习
+        ◆如何创建 /testdir/dir1/x,/testdir/dir1/y,/testdir/dir1/x/a,/testdir/dir1/x/b,/testdir/dir1/y/a/,/testdir/dir1/y/bin
+            示例:   mkdir -p testkdir/dir/{x,y}/{a,b}
+        ◆如何创建 /testdir/dir2/x,/testdir/dir2/y,/testdir/dir2/x/a,/testdir/dir2/x/b
+            示例:   mkdir -p testdir/dir2/{x/{a,b},y}
+        ◆如何创建 /testdir/dir3,/testdir/dir4,/testdir/dir5,/testdir/dir5/dir6,/testdir/dir5/dir7
+            示例:   mkdir -p testdir/{dir5/{dir6,dir7},dir3,dir4}
+                    mkdir -p testdir/{3,4,5/{dir6,dir7}}
+                    mkdir -p testdir/{3,4,5/dir{6,7}}
+
+索引节点
+    ◆inode (index node) 表中包含文件系统所有文件列表
+    ◆一个节点(索引节点)是一个表项，包含有关文件的信息(元数据),包括
+        文件类型，权限，UID，GID
+        链接数(指向这个文件名路径称个数)
+        该文件大小和不同的时间戳
+        指向磁盘上文件的数据块指针
+        有关文件的其他数据
