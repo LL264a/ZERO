@@ -359,15 +359,55 @@ tr命令
         ◆4、将/root/下文件列表,显示成一行,并文件名之间用空格隔开
 
         ◆5、计算1+2+3+.+99+100的总和
-
+            示例:   echo {1..100} | tr ' ' + | bc
         ◆6、删除 Windows文本文件中的'^M'字符
-
+            示例:   cat f1  | tr -d '\r' >f2
         ◆7、处理字符串"xt.,l 1 jr #!$mn 2 c*/e 3 uz 4"只保留其中的数字和空格
-
+            示例:   echo 'xt.,l 1 jr #!$mn 2 c*/e 3 uz 4;' | tr -dc '[0-9 ]'
         ◆8、将PATH变量每个目录显示在独立的一行
 
         ◆9、将指定文件中0-9分别替代成a-j
 
         ◆10、将文件/etc/centos- release中每个单词(由字母组成)显示在独立一行,并无空行
 
-        
+把多行发送给STD|N
+        ◆使用“<<终止词”命令从键盘把多行重导向给STDN
+            直到终止词位置的所有文本都发送给STDN
+            有时被称为就地文本( pretext)
+                >mail-s"PleaseCall"admin@maged.com<<END
+                >Hi Wang
+                >
+                >Please give me a call when you get in we may need
+                >to do some maintenance on server 1
+                >
+                >Details when you're on-site
+                >Zhang
+                >END
+    
+管道
+    ◆管道(使用符号“|”表示)用来连接命令
+        命令1|命令2|命令3
+            将命令1的STDOUT发送给命令2的STDIN，命令的STDOUT发送到命令3的STDIN
+            STDERR默认不能通过管道转发，可利用2>&1 或|&实现
+            最后一个命令会在当前sheel进程的字sheel进程中执行用来
+            组合多种工具的功能
+            ls |tr 'a-z' 'A-Z'
+    ◆less:  一页一页的查看
+        ls -l /etc | less
+    ◆mail:  通过电子邮件发送输入
+        echo "test email" |mail -s "test" uesr@examp;e.com
+    ◆lpr:   把输入发送给打印机
+        echo "test print" |lpr -P printer_name
+    
+    符号
+        ◆将 /home 里的文件打包，但打包的数据不是记录到文件而是发到stdout，经过管道后，将tar -cvf- /home传送给后面的tar -cvf-，后面这个 - 则是取前2一个命令的stdout，因此，就不需要使用临时file了
+        ◆tar -cvf- /home |tar -xvf-
+
+重定向到多个目标
+    ◆命令1 | tee [a] 文件名 | 命令2
+        把命令1的 STDOUT保存在文件中,做为命令2的输入
+        a追加
+    ◆使用:
+        保存不同阶段的输出
+        复杂管道的故障排除
+        同时查看和记录输出
