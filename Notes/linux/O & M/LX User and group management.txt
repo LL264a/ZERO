@@ -1,0 +1,15 @@
+用户user 
+    ◆令牌token,identity
+    ◆Linux用户: Username/UID
+    ◆管理员:    root,0
+    ◆普通用户:  1-6000 自动分配
+        系统用户:   1-499, 1999(CentOS7)
+            对守护进程获取资源进行权限分配
+        登入用户:500+ 1000+(CentOS7)
+            交互式登入
+组group 
+    ◆Linxu组:   Groupname/GID
+    ◆管理员:    root,0
+    ◆普通组:
+        系统组: 1-499,1-999 (CentOS7)
+        普通组: 500+,1000+ (CentOS7)
