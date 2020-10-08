@@ -7,9 +7,194 @@
             对守护进程获取资源进行权限分配
         登入用户:500+ 1000+(CentOS7)
             交互式登入
+
 组group 
     ◆Linxu组:   Groupname/GID
     ◆管理员:    root,0
     ◆普通组:
         系统组: 1-499,1-999 (CentOS7)
         普通组: 500+,1000+ (CentOS7)
+
+安全上下文
+    ◆Linux安全上下文
+        运行中程序: 进程(process)
+        以进程发起者的身份运行:
+            root:/bin/cat
+            mage:/bin/cat
+        进程所能够访问资源的权限取决于进程的运行者的身份
+
+组的类别
+    ◆Linux组的类别
+        用户的主要组(primary group)
+            用户必须属于一个且只有一个主组
+            组名用用户名，且仅包含一个用户，私有组
+        用户的附加组(supplementary group)
+            一个用户可以属于零个或多个辅助组
+    
+用户和组的配置文件
+    ◆Linux用户和组的主要配置文件:
+        /etc/passwd:    用户及其属性信息(名称,UID,主组ID等)
+        /etc/group:     组及其属性信息
+        /etc/shadow:    用户密码及其相关属性
+        /etc/gshadow:   组密码及其相关属性
+        
+密码加密
+    ◆加密机制:
+        加密:   明文-->密文
+        解密:   密文-->明文
+    ◆单向加密:  哈希算法,原文不同,密文比不同
+        相同算法定长输出,获得密文不可逆推出原始数据
+        雪崩效应:   初始条件微小改变,引起结果的巨大变化
+            md5:    message digest ,128bits
+            sha1:   secure hash algorithm, 160bits
+            sha224: 224bits
+            sha256: 256bits
+            sha384: 384bits
+            sha512: 512bits
+    ◆更改加密算法
+        authconfig --passalgo=sha256 -update
+
+密码的复杂性策略
+    ◆使用数字，大小字母，小写字母级特殊字符中至少3种
+    ◆足够长
+    ◆使用随机密码
+    ◆定期更换，不要使用最近曾经使用过的密码
+
+用户创建:   useradd
+    ◆useradd [options]LOGIN
+        -u      UID
+        -o      配合-u选项,不检查UID的唯一性
+        -g GID: 指明用户所属基本组，可为组名，也可以GID
+        -c "COMMENT":   用户的注释信息
+        -d HOME_DIR:    以指定的路径(不存在)为家目录
+        -s SHELL:       指明用户的默认shell程序，可用列表在/etc/shells文件中
+        -G GROUP1[,GROUP2,...]: 为用户指明附加组，组须事先存在
+        -N 不创建系统用户 CentOS 6 :ID<500, CentOS 7:ID<1000
+        -m      创建家目录,用于系统用户
+        -m      不创建家目录，用于非系统用户
+
+用户和组管理命令
+    ◆用户管理命令
+        useradd
+        usermod
+        userdel
+    ◆组账号维护命令
+        groupadd
+        groupmod
+        groupdel
+
+创建用户:useradd
+    ◆默认值设定:/etc/default/useradd
+    ◆显示或更改默认设置
+        useradd -D
+        useradd -D -s SHELL
+        useradd -D -b BASE_DIR
+        useradd -D -g GROUP
+
+练习
+    ◆1, 创建用户gentoo，附加组为bin和root，默认shell为/bin/csh,注释信息为"Gentoo Distribution"
+    ◆2,创建下面的用户，组合组员关系
+        名字为webs的组
+        groupadd webs 
+        用户Nginx使用webs作为附属组
+        useradd -G webs nginx
+        用户varnish，也使用webs作为附属组
+        useradd -G webs varnish
+        用户mysql，不可交互登入系统，且不是webs的成员，nginx，varnish，mysql密码都是magedu
+        useradd -s /sbin/nologin  mysql
+        echo magedu | passwd --stdin nginx
+        echo magedu | passwd --stdin varnish 
+        echo magedu | passwd --stdin mysql
+
+新建用户的相关文件和命令
+    ◆/etc/default/useradd
+    ◆/etc/skel/*
+    ◆/etc/login.defs
+    ◆newusers passwd格式文件 批量创建用户
+    ◆chpasswd 批量修改用户口令
+
+用户使用修改
+    ◆usermod [OPTIONS] login
+        -u UID: 新UID
+        -g GID: 新主组
+        -G GROUP[,GROUP2,...[GROUPN]]:  新附加组,原来的附加组将被覆盖;若保留原有，则要同时使用-a选项
+        —s SHELL:   新的默认SHELL
+        -c 'COMMENT':   新的注释信息
+        -d HOME:    新家目录不会自动创建;若要创建新家目录并移动原家数据，同时使用-m选项
+        -l login_name:  新的名字；
+        -L: lock 指定用户,在/etc/shadow 密码栏的增加！
+        -U: unlock指定用户，在/etc/shadow 密码栏的！拿掉
+        -e YYY-MM-DD:   指定用户账号过期日期
+        -f INACTIVE:    设定非活动期限
+
+删除用户
+    ◆userdel [OPTIONS]...login
+        -r: 删除用户家目录
+
+查看用户相关的ID信息
+    ◆id [OPTION]...[USER]
+        -u: 显示UID
+        -g: 显示GID
+        -G: 显示用户所属的组的ID
+        -n: 显示名称，需配合guG使用
+
+设置密码
+    ◆passwd [OPTIONS]UserName:修改指定用户的密码
+    ◆常用选项:
+        -d: 删除指定用户密码
+        -l: 锁定指定用户
+        -u: 解锁指定用户
+        -e: 强制用户下次登入修改密码
+        -f: 强制操作
+        -n mindays: 指定最短使用时限
+        -x maxdys:  最大使用时限
+        -w warndays:    提前多少天开始警告
+        -i inactivedays:    非活动期限
+        --stdin:    从标准输入接收用户密码
+            echo "PASSWORD"|passwd --stdin USERNAME
+
+修改用户密码策略
+    ◆chage [OPTION]...LOGIN
+        -d LAST_DAY
+        -E --expiredate EXPIRE_DATE
+        -i --inactive INACTIVE
+        -m --mindays MIN_DAYS
+        -M --maxdys MAX_DAYS
+        -W --warndays WARN_DAYS
+        -l 显示密码策略
+    ◆示例
+        chage -d 0 tom 下次登入强制重设密码
+        chage -m 0 -M 42 -W 14 -i 7 tom
+        chage -E 2016-09-10 tom
+
+用户相关的其他命令
+    ◆chfn指定个人信息
+    ◆chsh 指定shell
+    ◆finger
+
+创建组
+    ◆groupadd [OPTION]...group_name
+        -g GID: 指定GID;[GID_MIN,GID_MAX]
+        -r: 创建系统组
+            CentOS 6:ID<500
+            CentOS 7:ID<1000
+
+更改组密码
+    ◆组密码:gpasswd
+    ◆gpasswd [option]GROUP
+        -a user 将user添加至指定组中
+        -d user 从指定组中移除用户user
+        -A user1,user2,... 设置有管理权限的用户列表
+    ◆newgrp命令:临时切换主组
+        如果用户不属于此组，这需要组密码
+
+更改和查看组成员
+    ◆groupmems [optinos][action]
+        options:
+            -g: --group groupname 更改为指定组(只有root)
+        Actions:
+            -a: --add username  指定用户加入组
+            -d: --delete username   从组中删除用户
+            -p: --purge 从组中清除所有成员
+            -l: --list  显示组成员列表
+    ◆groups [OPTION].[USERNAME]...查看用户所属组列表
