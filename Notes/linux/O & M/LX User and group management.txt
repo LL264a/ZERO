@@ -198,3 +198,13 @@
             -p: --purge 从组中清除所有成员
             -l: --list  显示组成员列表
     ◆groups [OPTION].[USERNAME]...查看用户所属组列表
+
+文件权限
+    ◆文件属性
+        [root|GA-2 ~]# ll aria2.sh 
+        -rwxr-xr-x    1     root   root   24820  Jun  3 21:54 aria2.sh*
+        权限       引用计数  所有者 所属组   大小      时间       文件名
+    ◆文件属性操作
+        chown 设置文件的所有者
+        chgrp 设置文件的属组信息
+        
