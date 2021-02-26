@@ -1,3 +1,8 @@
+资源分派
+    Authentication: 认证
+    Authorization:  授权
+    Accoting|Autdition: 审计
+
 用户user 
     ◆令牌token,identity
     ◆Linux用户: Username/UID
