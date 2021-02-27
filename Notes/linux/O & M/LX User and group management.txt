@@ -76,7 +76,11 @@
         -G GROUP1[,GROUP2,...]: 为用户指明附加组，组须事先存在
         -N 不创建系统用户 CentOS 6 :ID<500, CentOS 7:ID<1000
         -m      创建家目录,用于系统用户
-        -m      不创建家目录，用于非系统用户
+        -M      不创建家目录，用于非系统用户
+        
+文件操作
+    ◆vipw和vigr
+    ◆pwck和grpck
 
 用户和组管理命令
     ◆用户管理命令
@@ -131,6 +135,17 @@
         -U: unlock指定用户，在/etc/shadow 密码栏的！拿掉
         -e YYY-MM-DD:   指定用户账号过期日期
         -f INACTIVE:    设定非活动期限
+
+切换用户或一其他用户身份执行命令
+    ◆su [options...][-][user[args..]]
+    ◆切换用户的的方式:
+        su UserName: 非登录式切换,即不会读取目标用户的配置文件,不改变当前工作目录
+        su-∪ surName: 登录式切换,会读取目标用户的配置文件,切换至家目录,完全切换
+    ◆ root su至其他用户无须密码;非root用户切换时需要密码
+    ◆换个身份执行命令
+        su [-] UserName-C 'COMMAND'
+    ◆选项:-| --ogin
+        su-| UserName相当于su- UserName
 
 删除用户
     ◆userdel [OPTIONS]...login
