@@ -387,4 +387,6 @@ Sticky 位
     ◆chattr +i 不能删除，改名，更改
     ◆chattr +a 只能追加内容
     ◆lsattr 显示特定属性
-    test 
+    test
+    test2
+    
