@@ -388,4 +388,4 @@ Sticky 位
     ◆chattr +a 只能追加内容
     ◆lsattr 显示特定属性
 
-new 
+test
