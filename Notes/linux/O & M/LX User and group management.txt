@@ -389,3 +389,5 @@ Sticky 位
     ◆lsattr 显示特定属性
 
 test
+
+2
