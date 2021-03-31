@@ -388,4 +388,11 @@ Sticky 位
     ◆chattr +a 只能追加内容
     ◆lsattr 显示特定属性
 
-test
+访问控制列表
+    ◆ACL: Access Control List,实现灵活的权限管理
+    ◆除了文件的所有者，所属组合其他人，可以对更多的用户设置权限
+    ◆CentOS7 默认创建的xfs和ext4文件系统具有ACL功能
+    ◆CentOS7 之前版本，默认手工创建ext4文件系统无ACL功能,需要手动增加
+        tune2fs -o acl /dev/sdb1
+        mount -o acl /dev/sdb1 /mnt/test
+    ◆ACL生效顺序: 所有者，自定义用户，自定义组，其他用户
