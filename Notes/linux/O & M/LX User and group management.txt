@@ -396,3 +396,39 @@ Sticky 位
         tune2fs -o acl /dev/sdb1
         mount -o acl /dev/sdb1 /mnt/test
     ◆ACL生效顺序: 所有者，自定义用户，自定义组，其他用户
+    ◆为多用户或者组的文件和目录赋予访问权限 rwx
+        · mount -o acl /directory
+        · getfacl file |directory
+        · setfacl -m u:wang"rwx file|directory
+        · setfacl -Rm g:sales:rwX directory
+        · setfacl -M file.acl file|directory
+        · setfacl -m g:salesgroup:rw file|directory
+        · setfacl -m d:u:wang:rx directory
+        · setfacl -x u:wang file|directory
+        · setfacl -X file.acl directory
+    ◆ACL文件上的group权限是mask值（自定义用户，自定义组，拥有组的最大权限），而非传统的组权限
+    ◆getfacl 可看到特殊权限:flags
+    ◆通过ACL 赋予目录默认x权限，目录内文件也不会继承x权限
+    ◆base ACL 不能删除
+    ◆setfacl -k dir 删除默认ACL权限
+    ◆setfacl -b file1 清除所有ACL权限
+    ◆getfacl file1 | setfacl --set-file=- file2 复制file1的acl 权限给file2
+    ◆mask只影响所有者和other的之外的人和组的最大权限
+        Mask需要与用户的权限进行逻辑与运算后，才能变成有限的权限（EffectivePermission）
+        用户或组的设置必须存在于mask权限设定范围内才会生效
+        mask::rx file
+    ◆--set选项会吧原有的ACL项都删除，用新的代替，需要注意的是一定要含UGO的设置，不能像-m一样只是添加ACL就可以
+    ◆示例:
+        setfacl --set u::rw,u::wang:rw,g::r,o::-file1
+    ◆备份和恢复ACL
+    ◆主要的文件操作命令cp和mv都支持ACL，只是cp命令需要加上-p 参数。但是tar等常见的备份工具是不会保留目录和文件的ACL信息
+     getfacl -R /tmp/dir1 >acl.txt
+     setfacl -R -d /tmp/dir1
+     setfacl -R --set-file=acl.txt /tmp/dir1
+     setfacl --restore acl.txt
+     gerfacl -R /tmp/dir1 
+
+    练习
+    ◆1.在/testdir/dir里创建新文件自动属于webs组，组apps的成员：tomcat能对这些新文件有读写权限，组dbs的成员如：mysql只能度新文件有读权限，其他用户（不属于webs，apps，dbs）不能访问这个文件夹
+
+    ◆2. 备份/testdir/dir里的所有文件袋ACL权限到/root/acl.txt中，清除/testdir/dir中所有ACL权限，最后还原ACL权限    
