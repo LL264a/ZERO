@@ -1,2 +1,1 @@
-test21
-print 1
+ZERO
