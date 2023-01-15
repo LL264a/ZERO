@@ -2,6 +2,8 @@
 # break可以用来立即退出循环语句
 # continue
 # continue可以用来跳过档次循环
+# pass
+# pass是用来判断或循环语句中占位的
 
 # 创建一个五次的循环
 # i = 0
