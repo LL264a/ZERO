@@ -1,1 +1,3 @@
 重新上路
+配置了vscode
+配置了pycharm
