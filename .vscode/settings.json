@@ -2,6 +2,7 @@
     "files.exclude": {
         ".gitignore": true,
         ".vscode": true,
+        "**/.idea": true,
         "LICENSE": true,
         "settings.json": true,
         "ZERO.code-workspace": true
